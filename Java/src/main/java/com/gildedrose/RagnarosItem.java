@@ -3,12 +3,12 @@ package com.gildedrose;
 class RagnarosItem extends ItemWrapper {
     static final String NAME = "Sulfuras, Hand of Ragnaros";
 
-    RagnarosItem(Item item) {
-        super(item);
+    RagnarosItem(int sellIn, int quality) {
+        super(NAME, sellIn, quality);
     }
 
     @Override
-    void updateQuality() {
-        // nothing
+    ItemWrapper updateQuality() {
+        return new RagnarosItem(sellIn, quality);
     }
 }

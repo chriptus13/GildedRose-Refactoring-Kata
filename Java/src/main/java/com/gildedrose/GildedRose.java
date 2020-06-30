@@ -1,5 +1,7 @@
 package com.gildedrose;
 
+import java.util.stream.Stream;
+
 class GildedRose {
     Item[] items;
 
@@ -8,7 +10,10 @@ class GildedRose {
     }
 
     public void updateQuality() {
-        for (Item item : items)
-            ItemWrapper.fromItem(item).updateQuality();
+        items = Stream.of(items)
+                .map(ItemFactory::fromItem)
+                .map(ItemWrapper::updateQuality)
+                .map(ItemWrapper::toItem)
+                .toArray(Item[]::new);
     }
 }

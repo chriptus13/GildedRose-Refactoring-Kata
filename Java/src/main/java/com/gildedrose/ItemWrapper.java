@@ -1,24 +1,18 @@
 package com.gildedrose;
 
 abstract class ItemWrapper {
-    protected final Item item;
+    protected final String name;
+    protected final int sellIn, quality;
 
-    ItemWrapper(Item item) {
-        this.item = item;
+    ItemWrapper(String name, int sellIn, int quality) {
+        this.name = name;
+        this.sellIn = sellIn;
+        this.quality = quality;
     }
 
-    abstract void updateQuality();
+    abstract ItemWrapper updateQuality();
 
-    static ItemWrapper fromItem(Item item) {
-        switch (item.name) {
-            case BrieItem.NAME:
-                return new BrieItem(item);
-            case BackstageItem.NAME:
-                return new BackstageItem(item);
-            case RagnarosItem.NAME:
-                return new RagnarosItem(item);
-            default:
-                return new DefaultItem(item);
-        }
+    Item toItem() {
+        return new Item(name, sellIn, quality);
     }
 }
