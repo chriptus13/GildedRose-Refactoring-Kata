@@ -11,6 +11,8 @@ public class ItemFactory {
                 return new BackstageItem(sellIn, quality);
             case RagnarosItem.NAME:
                 return new RagnarosItem(sellIn, quality);
+            case ConjuredItem.NAME:
+                return new ConjuredItem(sellIn, quality);
             default:
                 return new DefaultItem(name, sellIn, quality);
         }
